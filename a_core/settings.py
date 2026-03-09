@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from environ import Env
-env=Env()
-env.read_env()
+import environ
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env=environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -161,4 +163,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
 
-STRIPE_SECRET_KEY=env("STRIPE_SECRET_KEY_TEST",default="secret  ")
+STRIPE_SECRET_KEY=env("STRIPE_SECRET_KEY_TEST",default="secret")

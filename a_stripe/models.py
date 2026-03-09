@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class UserPayment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    stripe_customer = models.CharField(max_length=500, blank=True)
+    stripe_customer_id = models.CharField(max_length=500, blank=True)
     stripe_checkout_id = models.CharField(max_length=500, blank=True)
     stripe_product_id = models.CharField(max_length=500, blank=True)
     product_name = models.CharField(max_length=500, blank=True)
