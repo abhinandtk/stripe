@@ -9,7 +9,7 @@
         </div>
         <div class="pt-32">
            <h2>{{product.name}}</h2>
-           <p class="text-lg">{{product.price}}</p>
+           <p class="text-lg">${{product_price}}</p>
 
            <form enctype="multipart/form-data" method="post" role="product_page">
             {% csrf_token %}

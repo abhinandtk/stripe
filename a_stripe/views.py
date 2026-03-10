@@ -13,4 +13,4 @@ def product_view(request):
     prices=stripe.Price.list(product=product_id)
     price=prices.data[0]
     product_price=price.unit_amount / 100.0
-    return render(request,"a_stripe/product.html",{'product':product})
+    return render(request,"a_stripe/product.html",{'product':product,"product_price":product_price})
