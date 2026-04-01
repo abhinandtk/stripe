@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render,redirect,reverse
 import stripe
 
 stripe.api_key=settings.STRIPE_SECRET_KEY
@@ -13,4 +13,7 @@ def product_view(request):
     prices=stripe.Price.list(product=product_id)
     price=prices.data[0]
     product_price=price.unit_amount / 100.0
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return redirect(f'{settings.BASE_URL}{reverse("account_login")}?next={request.get_full_path()}')
     return render(request,"a_stripe/product.html",{'product':product,"product_price":product_price})

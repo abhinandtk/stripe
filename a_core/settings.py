@@ -19,6 +19,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_URL='http://localhost:8000'
 
 
 # Project title displayed in the header
